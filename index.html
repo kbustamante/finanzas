@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f3a5f">
+<title>Finanzas de la casa</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<style>
+  html, body { margin: 0; height: 100%; background: #0f172a; overflow: hidden; }
+  iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: #f3f4f6; }
+  #carga { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+           color: #fff; font-family: -apple-system, Roboto, Arial, sans-serif; gap: 16px; }
+  #carga img { width: 96px; height: 96px; border-radius: 22px; }
+</style>
+</head>
+<body>
+<div id="carga"><img src="icon-192.png" alt=""><div>Cargando…</div></div>
+<script>
+  // ====== PEGA AQUÍ EL ENLACE DE TU APP (el que termina en /exec) ======
+  const APP_URL = 'https://script.google.com/macros/s/AKfycbxp42XRyuelbg8BS6QAUAbCRdTywzymo20BcFT890IKiwY1JdrjRbogTmf08Ku6v-E/exec';
+  // =====================================================================
+
+  const f = document.createElement('iframe');
+  f.src = APP_URL;
+  f.allow = 'clipboard-write';
+  f.onload = () => { const c = document.getElementById('carga'); if (c) c.remove(); };
+  document.body.appendChild(f);
+
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
